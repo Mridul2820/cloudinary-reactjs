@@ -11,7 +11,10 @@ const ImageUpload = () => {
     setLoading(true);
     const data = new FormData();
     data.append("file", image);
-    data.append("upload_preset", "jwcge4mi");
+    data.append(
+      "upload_preset",
+      process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
+    );
     data.append("cloud_name", process.env.REACT_APP_CLOUDINARY_CLOUD_NAME);
     data.append("folder", "Cloudinary-React");
 
