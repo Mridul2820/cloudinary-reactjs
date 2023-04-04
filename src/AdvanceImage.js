@@ -37,9 +37,16 @@ const AdvanceImage = ({ url }) => {
         <Image
           cloudName={CLOUD_NAME}
           publicId={url}
-          overlay="watermark"
-          gravity="south_east"
-          opacity="60"
+          transformation={{
+            width: 400,
+            height: 400,
+            crop: "thumb",
+            overlay: {
+              font_family: "Arial",
+              font_size: 40,
+              text: "My Watermark",
+            },
+          }}
         />
       ),
     },
@@ -49,10 +56,12 @@ const AdvanceImage = ({ url }) => {
         <Image
           cloudName={CLOUD_NAME}
           publicId={url}
-          gravity="faces"
-          crop="thumb"
-          width="200"
-          height="200"
+          transformation={{
+            width: 500,
+            height: 500,
+            crop: "thumb",
+            face: "auto",
+          }}
         />
       ),
     },
@@ -68,21 +77,42 @@ const AdvanceImage = ({ url }) => {
       ),
     },
     {
-      name: "Automatic background removal",
+      name: "Blur Faces",
       component: (
-        <Image cloudName={CLOUD_NAME} publicId={url} remove_background="auto" />
+        <Image
+          cloudName={CLOUD_NAME}
+          publicId={url}
+          transformation={{
+            width: 500,
+            height: 500,
+            crop: "thumb",
+            effect: "pixelate_faces",
+            gravity: "auto",
+          }}
+        />
       ),
     },
     {
-      name: "Video Thumbnail Generation",
+      name: "Image Placeholder",
       component: (
-        <Image cloudName={CLOUD_NAME} publicId={url} video_thumbnail="10" />
+        <Image cloudName={CLOUD_NAME} publicId={url} placeholder="blur" />
       ),
     },
     {
-      name: "Face Blurring",
+      name: "Multiple Transformation",
       component: (
-        <Image cloudName={CLOUD_NAME} publicId={url} blur_faces="true" />
+        <Image
+          cloudName={CLOUD_NAME}
+          publicId={url}
+          transformation={{
+            width: 400,
+            height: 400,
+            crop: "fill",
+            effect: "brightness:20",
+            angle: 45,
+            border: "2px_solid_black",
+          }}
+        />
       ),
     },
   ];

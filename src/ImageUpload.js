@@ -13,6 +13,7 @@ const ImageUpload = () => {
     data.append("file", image);
     data.append("upload_preset", "jwcge4mi");
     data.append("cloud_name", process.env.REACT_APP_CLOUDINARY_CLOUD_NAME);
+    data.append("folder", "Cloudinary-React");
 
     try {
       const response = await fetch(
