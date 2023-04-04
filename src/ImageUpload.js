@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Image } from "cloudinary-react";
+import AdvanceImage from "./AdvanceImage";
 
 const ImageUpload = () => {
   const [image, setImage] = useState(null);
@@ -49,7 +49,7 @@ const ImageUpload = () => {
 
   return (
     <div className="h-screen sm:px-8 md:px-16 sm:py-8">
-      <main className="container mx-auto max-w-screen-lg h-full">
+      <div className="container mx-auto max-w-screen-lg h-full">
         <header className="border-dashed border-2 border-gray-400 py-12 flex flex-col justify-center items-center">
           <p className="mb-3 font-semibold text-gray-900 flex flex-wrap justify-center">
             <span>Click on Upload a File</span>&nbsp;
@@ -92,17 +92,13 @@ const ImageUpload = () => {
             <span>Processing...</span>
           </div>
         ) : (
-          image && (
+          url && (
             <div className="pb-8 pt-4">
-              <Image
-                cloudName={process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}
-                publicId={url}
-                className="mx-auto rounded-md"
-              />
+              <AdvanceImage url={url} />
             </div>
           )
         )}
-      </main>
+      </div>
     </div>
   );
 };
